@@ -34,11 +34,16 @@ module.exports = function (config) {
     prefix: '{{this.prefix}}'
   })
 
+  const templateFile = config.templateFile || resolve(__dirname, './templates/template.hbs');
+  const headerFile = config.headerFile || resolve(__dirname, './templates/header.hbs');
+  const commitFile = config.commitFile || resolve(__dirname, './templates/commit.hbs');
+  const footerFile = config.footerFile || resolve(__dirname, './templates/footer.hbs');
+
   return Q.all([
-    readFile(resolve(__dirname, './templates/template.hbs'), 'utf-8'),
-    readFile(resolve(__dirname, './templates/header.hbs'), 'utf-8'),
-    readFile(resolve(__dirname, './templates/commit.hbs'), 'utf-8'),
-    readFile(resolve(__dirname, './templates/footer.hbs'), 'utf-8')
+    readFile(templateFile, 'utf-8'),
+    readFile(headerFile, 'utf-8'),
+    readFile(commitFile, 'utf-8'),
+    readFile(footerFile, 'utf-8')
   ])
     .spread((template, header, commit, footer) => {
       const writerOpts = getWriterOpts(config)
