@@ -1,11 +1,14 @@
 {
-  "name": "conventional-changelog-conventionalcommits",
+  "name": "@alaychak-hc/conventional-changelog",
   "version": "5.1.0",
   "description": "conventional-changelog conventionalcommits.org preset",
   "main": "index.js",
   "scripts": {
     "test-windows": "mocha --timeout 30000",
-    "publish:cc": "pnpm --filter conventional-changelog-conventionalcommits publish"
+    "publish:cc": "pnpm publish --publish-branch=dev --no-git-checks"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "repository": {
     "type": "git",

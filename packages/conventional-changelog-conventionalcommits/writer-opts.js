@@ -47,6 +47,11 @@ module.exports = function (config) {
   ])
     .spread((template, header, commit, footer) => {
       const writerOpts = getWriterOpts(config)
+      
+      template = config.template || template;
+      header = config.header || header;
+      commit = config.commit || commit;
+      footer = config.footer || footer;
 
       writerOpts.mainTemplate = template
       writerOpts.headerPartial = header
